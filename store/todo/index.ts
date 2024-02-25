@@ -1,21 +1,16 @@
 import { defineStore } from 'pinia'
-import type { ITodoItem } from "./models"
-import { state } from './state'
-import * as getters from './getters'
+import useState from './state'
+import useGetters from './getters'
+import useActions from './actions'
 
-export const useTodoStore = defineStore({
-  id: 'Todo',
-  state: () => {
-    return state
-  },
-  getters,
-  actions: {
-    setOnceTodo (todoItem: ITodoItem) {
-      const findTodo = this.todos.find((t: ITodoItem) => t.id === todoItem.id)
+export const useTodoStore = defineStore('Todo', () => {
+  const state = useState()
+  const getters = useGetters(state)
+  const actions = useActions(state)
 
-      if (!findTodo) {
-        this.todos.push(todoItem)
-      }
-    }
+  return {
+    ...state,
+    ...getters,
+    ...actions
   }
 })

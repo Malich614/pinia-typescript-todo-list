@@ -1,5 +1,10 @@
-import type { ITodoStore, ITodoItem } from "./models"
+import { computed } from "vue"
+import type { ITodoStore } from "./models"
 
-export const getTodos = (state: ITodoStore): ITodoItem[] => {
-  return state.todos
+export default function useGetters (state: ITodoStore) {
+  const getTodos = computed(() => state.todos.value)
+
+  return {
+    getTodos
+  }
 }
