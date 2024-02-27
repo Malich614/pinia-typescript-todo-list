@@ -1,13 +1,11 @@
 import type { ITodoStore, ITodoItem } from "./models"
+import { Todo } from "./controllers"
 
 export default function useActions (state: ITodoStore) {
 
-  function setOnceTodo (todoItem: ITodoItem) {
-    const findTodo = state.todos.value.find((t: ITodoItem) => t.id === todoItem.id)
-
-    if (!findTodo) {
-      state.todos.value.push(todoItem)
-    }
+  function setOnceTodo (text: string) {
+    const todo = new Todo()
+    state.todos.value.push(todo.create(text))
   }
 
   function setTodoActionDelete (id: string | number, isDelete: boolean) {
