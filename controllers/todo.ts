@@ -1,5 +1,5 @@
 
-import type { ITodoItem, IActions } from './models'
+import type { ITodoItem, IActions } from '../models/todo'
 
 export interface ITodo extends ITodoItem {
   create(text: string): ITodoItem

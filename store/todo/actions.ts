@@ -1,5 +1,5 @@
-import type { ITodoStore, ITodoItem } from "./models"
-import { Todo } from "./controllers"
+import type { ITodoStore, ITodoItem } from "../../models/todo"
+import { Todo } from "../../controllers/todo"
 
 export default function useActions (state: ITodoStore) {
 
